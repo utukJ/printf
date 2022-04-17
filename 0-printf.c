@@ -1,5 +1,7 @@
 #include <stdarg.h>
-#include <stdio.h>
+#include <unistd.h>
+
+void _putchar(char);
 
 /**
  * _printf - functions as printf
@@ -20,7 +22,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] != '%')
 		{
-			putchar(format[i]);
+			write(1, format + i, 1);
 			byte_count++;
 		}
 		else
@@ -28,7 +30,7 @@ int _printf(const char *format, ...)
 			i++;
 			if (format[i] == 'c')
 			{
-				putchar(va_arg(ap, int));
+				write(1, format + i, 1);
 				byte_count++;
 			}
 			else if (format[i] == 's')
@@ -37,13 +39,13 @@ int _printf(const char *format, ...)
 
 				for (j = 0; tmpstr[j] != 0; j++)
 				{
-					putchar(tmpstr[j]);
+					write(1, tmpstr + j, 1);
 					byte_count++;
 				}
 			}
 			else 
 			{
-				putchar(format[i]);
+				write(1, format + i, 1);
 			}
 		}
 	}
