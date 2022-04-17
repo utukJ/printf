@@ -15,6 +15,8 @@ int _printf(const char *format, ...)
 	va_list ap;
 	const char *tmpstr;
 	
+	byte_count = 0;
+	
 	va_start(ap, format);
 
 	if (format == NULL)
