@@ -46,8 +46,14 @@ int _printf(const char *format, ...)
 					byte_count++;
 				}
 			}
-			else
+			else if (format[i] == '%')
 				write(1, format + i, 1);
+			else
+			{
+				va_end(ap);
+				return (-1);
+			}
+				
 		}
 	}
 
