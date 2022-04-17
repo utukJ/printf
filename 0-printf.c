@@ -12,7 +12,7 @@ void _putchar(char);
  */
 int _printf(const char *format, ...)
 {
-	int i, byte_count, j;
+	int i, byte_count, j, c;
 	va_list ap;
 	const char *tmpstr;
 	  
@@ -30,7 +30,8 @@ int _printf(const char *format, ...)
 			i++;
 			if (format[i] == 'c')
 			{
-				write(1, format + i, 1);
+				c = va_arg(ap, int);
+				write(1, &c, 1);
 				byte_count++;
 			}
 			else if (format[i] == 's')
@@ -44,9 +45,7 @@ int _printf(const char *format, ...)
 				}
 			}
 			else 
-			{
 				write(1, format + i, 1);
-			}
 		}
 	}
 
