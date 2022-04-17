@@ -2,8 +2,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-void _putchar(char);
-
 /**
  * _printf - functions as printf
  * @format: format string
@@ -16,7 +14,7 @@ int _printf(const char *format, ...)
 	int i, byte_count, j, c;
 	va_list ap;
 	const char *tmpstr;
-	  
+	
 	va_start(ap, format);
 
 	if (format == NULL) {
@@ -49,7 +47,7 @@ int _printf(const char *format, ...)
 					byte_count++;
 				}
 			}
-			else 
+			else
 				write(1, format + i, 1);
 		}
 	}
