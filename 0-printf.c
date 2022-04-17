@@ -1,5 +1,6 @@
 #include <stdarg.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 void _putchar(char);
 
@@ -17,6 +18,10 @@ int _printf(const char *format, ...)
 	const char *tmpstr;
 	  
 	va_start(ap, format);
+
+	if (format == NULL) {
+		return (-1);
+	}
 
 	for (i = 0; format[i] != 0; i++)
 	{
