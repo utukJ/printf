@@ -49,16 +49,10 @@ int _printf(const char *format, ...)
 					byte_count++;
 				}
 			}
-			else if (format[i] == '%')
+			else
 			{
 			 	_putchar(format[i]);
 				byte_count++;
-			}
-
-			else
-			{
-				va_end(ap);
-				return (-1);
 			}
 		}
 	}
