@@ -31,7 +31,12 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			i++;
+			do
+			{
+				i++;
+			}
+			while (format[i] == ' ');
+
 			if (format[i] == 'c')
 			{
 				_putchar(va_arg(ap, int));
