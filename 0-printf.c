@@ -1,6 +1,6 @@
 #include <stdarg.h>
-#include <unistd.h>
 #include <stdlib.h>
+#include "main.h"
 
 /**
  * _printf - functions as printf
@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] != '%')
 		{
-			write(1, format + i, 1);
+			_putchar(format[i]);
 			byte_count++;
 		}
 		else
@@ -34,8 +34,7 @@ int _printf(const char *format, ...)
 			i++;
 			if (format[i] == 'c')
 			{
-				c = va_arg(ap, int);
-				write(1, &c, 1);
+				_putchar(va_arg(ap, int));
 				byte_count++;
 			}
 			else if (format[i] == 's')
@@ -44,12 +43,16 @@ int _printf(const char *format, ...)
 
 				for (j = 0; tmpstr[j] != 0; j++)
 				{
-					write(1, tmpstr + j, 1);
+					_putchar(tmpstr[j]);
 					byte_count++;
 				}
 			}
 			else if (format[i] == '%')
-				write(1, format + i, 1);
+			{
+			 	_putchar(format[i]);
+				byte_count++;
+			}
+
 			else
 			{
 				va_end(ap);
