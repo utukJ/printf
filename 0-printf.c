@@ -5,7 +5,6 @@
 /**
  * _printf - functions as printf
  * @format: format string
- * @...: variable arguments to fill placeholders
  *
  * Return: (int) number of bytes printed
  */
