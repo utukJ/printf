@@ -60,7 +60,8 @@ int _printf(const char *format, ...)
 
 			else
 			{
-				return (-1);
+				_putchar('%');
+				byte_count++;
 			}
 				
 		}
