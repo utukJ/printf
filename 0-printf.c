@@ -11,7 +11,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int i, byte_count, j, c;
+	int i, byte_count, j;
 	va_list ap;
 	const char *tmpstr;
 	
