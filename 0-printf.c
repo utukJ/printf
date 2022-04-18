@@ -30,11 +30,9 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			do
-			{
+			do {
 				i++;
-			}
-			while (format[i] == ' ');
+			} while (format[i] == ' ');
 
 			if (format[i] == 'c')
 			{
@@ -53,6 +51,11 @@ int _printf(const char *format, ...)
 					byte_count++;
 				}
 			}
+			else if (format[i] == '%')
+			{
+				_putchar('%');
+				byte_count++;
+			}
 			else if (format[i] == 0)
 			{
 				va_end(ap);
@@ -60,8 +63,9 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
+				_putchar('%');
 			 	_putchar(format[i]);
-				byte_count++;
+				byte_count += 2;
 			}
 		}
 	}
