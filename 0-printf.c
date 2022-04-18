@@ -40,9 +40,6 @@ int _printf(const char *format, ...)
 			else if (format[i] == 's')
 			{
 				tmpstr = va_arg(ap, char *);
-				// if (tmpstr == NULL)
-				// 	tmpstr = "(null)";
-
 				for (j = 0; tmpstr[j] != 0; j++)
 				{
 					_putchar(tmpstr[j]);
