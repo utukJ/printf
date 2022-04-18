@@ -10,9 +10,8 @@
  */
 int _printf(const char *format, ...)
 {
-	int i, byte_count, j;
+	int i, byte_count;
 	va_list ap;
-	const char *tmpstr;
 	
 	byte_count = 0;
 	
@@ -24,43 +23,28 @@ int _printf(const char *format, ...)
 	for (i = 0; format[i] != 0; i++)
 	{
 		if (format[i] != '%')
-		{
-			_putchar(format[i]);
-			byte_count++;
-		}
+			byte_count += _putchar(format[i]);
+		
 		else
 		{
+			// skip spaces that come after '%'
 			do {
 				i++;
 			} while (format[i] == ' ');
 
+			// handle c specifier
 			if (format[i] == 'c')
-			{
-				_putchar(va_arg(ap, int));
-				byte_count++;
-			}
-			else if (format[i] == 's')
-			{
-				tmpstr = va_arg(ap, char *);
-				if (tmpstr == NULL)
-					tmpstr = "(null)";
+				byte_count += _putchar(va_arg(ap, int));
 
-				for (j = 0; tmpstr[j] != 0; j++)
-				{
-					_putchar(tmpstr[j]);
-					byte_count++;
-				}
-			}
+			else if (format[i] == 's')
+				byte_count += print_string(va_arg(ap, char *));
+				
 			else if (format[i] == '%')
-			{
-				_putchar('%');
-				byte_count++;
-			}
+				byte_count += _putchar('%');
+
 			else if (format[i] == 0)
-			{
-				va_end(ap);
 				return (-1);
-			}
+
 			else
 			{
 				_putchar('%');
