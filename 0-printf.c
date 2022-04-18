@@ -27,12 +27,10 @@ int _printf(const char *format, ...)
 		
 		else
 		{
-			// skip spaces that come after '%'
 			do {
 				i++;
 			} while (format[i] == ' ');
 
-			// handle c specifier
 			if (format[i] == 'c')
 				byte_count += _putchar(va_arg(ap, int));
 
