@@ -54,6 +54,11 @@ int _printf(const char *format, ...)
 					byte_count++;
 				}
 			}
+			else if (format[i] == 0)
+			{
+				va_end(ap);
+				return (-1);
+			}
 			else
 			{
 			 	_putchar(format[i]);
