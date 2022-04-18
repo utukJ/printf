@@ -60,8 +60,7 @@ int _printf(const char *format, ...)
 
 			else
 			{
-				_putchar(format[i]);
-				byte_count++;
+				return (-1);
 			}
 				
 		}
