@@ -6,7 +6,7 @@
  * _putchar - prints a char to stdout
  * @c: char to be printed
  * 
- * Return: nothing
+ * Return: 1 for success
  */
 int _putchar(char c)
 {
@@ -14,7 +14,7 @@ int _putchar(char c)
 }
 
 /**
- * print_str - prints a string to stdout
+ * print_string - prints a string to stdout
  * @str: yields next argument(string) to be printed
  * 
  * Return: int count of number of bytes printed
