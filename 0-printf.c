@@ -1,6 +1,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include "main.h"
+#include <stdio.h>
 
 /**
  * _printf - functions as printf
@@ -12,7 +13,7 @@ int _printf(const char *format, ...)
 {
 	int i, byte_count;
 	va_list ap;
-	
+
 	byte_count = 0;
 	
 	va_start(ap, format);
@@ -24,7 +25,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] != '%')
 			byte_count += _putchar(format[i]);
-		
+
 		else
 		{
 			do {
@@ -32,11 +33,14 @@ int _printf(const char *format, ...)
 			} while (format[i] == ' ');
 
 			if (format[i] == 'c')
-				byte_count += _putchar(va_arg(ap, int));
+				byte_count += print_char(&ap);
 
 			else if (format[i] == 's')
-				byte_count += print_string(va_arg(ap, char *));
-				
+				byte_count += print_string(&ap);
+
+			else if (format[i] == 'd' || format[i] == 'i')
+				byte_count += print_int(&ap);
+
 			else if (format[i] == '%')
 				byte_count += _putchar('%');
 
